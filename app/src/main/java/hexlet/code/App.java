@@ -6,10 +6,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String greet =
-                "Please enter the game number and press Enter.\n"
-                        + "1 - Greet\n"
-                        + "2 - Even\n"
-                        + "0 - Exit";
+                "Please enter the game number and press Enter.\n1 - Greet\n2 - Even\n0 - Exit";
 
         System.out.println(greet);
         String selectNumber = sc.next();
@@ -23,9 +20,6 @@ public class App {
             main(args);
         } else if ("0".equals(selectNumber)) {
             sc.close();
-        } else {
-            System.out.println("Please enter a valid game number.");
-            main(args);
         }
         sc.close();
     }
