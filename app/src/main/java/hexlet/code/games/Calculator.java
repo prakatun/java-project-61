@@ -9,14 +9,9 @@ import static java.lang.Math.random;
 public class Calculator {
     public static void game(Scanner sc, String name) {
         System.out.println("What is the result of the expression?");
-        gameCount(sc, name);
-    }
-
-
-    public static void gameCount(Scanner sc, String name) {
         int i = 0;
         final int step = 3;
-        while (Calculator.gameCondition(sc, name)) {
+        while (gamelogic(sc, name)) {
             i++;
             if (i == step) {
                 System.out.println("Congratulations, " + name + "!");
@@ -36,7 +31,7 @@ public class Calculator {
         return '*';
     }
 
-    public static boolean gameCondition(Scanner sc, String name) {
+    public static boolean gamelogic(Scanner sc, String name) {
 
         Character randomOperator = randomOperator();
         int randomNumber1 = App.randomNumber(); //0-100

@@ -7,14 +7,9 @@ import java.util.Scanner;
 public class CheckForEven {
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-
-        gameCount(sc, name);
-    }
-
-    public static void gameCount(Scanner sc, String name) {
         int i = 0;
         final int step = 3;
-        while (CheckForEven.gameCondition(sc, name)) {
+        while (gamelogic(sc, name)) {
             i++;
             if (i == step) {
                 System.out.println("Congratulations, " + name + "!");
@@ -23,7 +18,7 @@ public class CheckForEven {
         }
     }
 
-    public static boolean gameCondition(Scanner sc, String name) {
+    public static boolean gamelogic(Scanner sc, String name) {
         int randomNumber = App.randomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();
