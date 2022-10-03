@@ -13,7 +13,7 @@ public class CheckForEven {
 
     public static void gameCount(Scanner sc, String name, int step) {
         int i = 0;
-        while (gameCondition(sc, name)) {
+        while (CheckForEven.gameCondition(sc, name)) {
             i++;
             if (i == step) {
                 System.out.println("Congratulations, " + name + "!");

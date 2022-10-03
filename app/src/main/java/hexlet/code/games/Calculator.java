@@ -14,7 +14,7 @@ public class Calculator {
 
     public static void gameCount(Scanner sc, String name, int step) {
         int i = 0;
-        while (gameCondition(sc, name)) {
+        while (Calculator.gameCondition(sc, name)) {
             i++;
             if (i == step) {
                 System.out.println("Congratulations, " + name + "!");
