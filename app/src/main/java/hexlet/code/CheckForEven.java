@@ -20,14 +20,20 @@ public class CheckForEven {
 
     public static int gameRandomNumber() {
         final int maxNumber = 100; // максимальное рандомное
-        return (int) (random() * maxNumber);
+        int randomnumber = (int) (random() * maxNumber);
+        System.out.println("Question: " + randomnumber);
+        return randomnumber;
+    }
+
+    public static String gamePrintNumber(Scanner sc) {
+        String answer = sc.next();
+        System.out.println("Your answer: " + answer);
+        return answer;
     }
 
     public static boolean gameCondition(Scanner sc, String name) {
         int randomNumber = gameRandomNumber();
-        System.out.println("Question: " + randomNumber);
-        String answer = sc.next();
-        System.out.println("Your answer: " + answer);
+        String answer = gamePrintNumber(sc);
         if ((randomNumber % 2 == 0 && "yes".equals(answer)) || (randomNumber % 2 != 0 && "no".equals(answer))) {
             System.out.println("Correct!");
             return true;
