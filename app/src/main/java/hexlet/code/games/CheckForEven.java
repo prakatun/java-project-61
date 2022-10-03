@@ -7,18 +7,10 @@ import java.util.Scanner;
 public class CheckForEven {
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-        int i = 0;
-        final int step = 3;
-        while (gamelogic(sc, name)) {
-            i++;
-            if (i == step) {
-                System.out.println("Congratulations, " + name + "!");
-                break;
-            }
-        }
+        App.gameStep(sc, name, "Even");
     }
 
-    public static boolean gamelogic(Scanner sc, String name) {
+    public static boolean gameLogic(Scanner sc, String name) {
         int randomNumber = App.randomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();

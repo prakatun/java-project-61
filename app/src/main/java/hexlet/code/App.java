@@ -44,4 +44,23 @@ public class App {
         final int maxNumber = 10; // максимальное рандомное
         return (int) (random() * maxNumber);
     }
+
+    public static void gameStep(Scanner sc, String name, String gameName) {
+        final int step = 3; //кол-во шагов в играх
+        int i = 0;
+
+        boolean gameLogic = false;
+        do {
+            i++;
+            if ("Calc".equals(gameName)) {
+                gameLogic = Calculator.gameLogic(sc, name);
+            } else if ("Even".equals(gameName)) {
+                gameLogic = CheckForEven.gameLogic(sc, name);
+            }
+            if (i == step) {
+                System.out.println("Congratulations, " + name + "!");
+                break;
+            }
+        } while (gameLogic);
+    }
 }
