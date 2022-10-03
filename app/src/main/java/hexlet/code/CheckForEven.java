@@ -8,10 +8,6 @@ public class CheckForEven {
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
         final int step = 3; //кол-во шагов в игре
-        gameCount(sc, name, step);
-    }
-
-    public static void gameCount(Scanner sc, String name, int step) {
         int i = 0;
         while (gameCondition(sc, name)) {
             i++;
@@ -22,9 +18,13 @@ public class CheckForEven {
         }
     }
 
-    public static boolean gameCondition(Scanner sc, String name) {
+    public static int gameRandomNumber() {
         final int maxNumber = 100; // максимальное рандомное
-        int randomNumber = (int) (random() * maxNumber);
+        return (int) (random() * maxNumber);
+    }
+
+    public static boolean gameCondition(Scanner sc, String name) {
+        int randomNumber = gameRandomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
@@ -36,6 +36,6 @@ public class CheckForEven {
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctanswer + "'.\n"
                     + "Let's try again, " + name + "!");
         }
-        return true;
+        return false;
     }
 }

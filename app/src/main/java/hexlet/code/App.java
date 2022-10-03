@@ -23,6 +23,7 @@ public class App {
         }
         sc.close();
     }
+
     public static void choicePrint(String choice) {
         System.out.println("Your choice: " + choice);
     }
