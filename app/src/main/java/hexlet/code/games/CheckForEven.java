@@ -1,13 +1,13 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.App;
 
 import java.util.Scanner;
 
-import static java.lang.Math.random;
-
 public class CheckForEven {
-    public static void game(Scanner sc, String name) {
+    public static void game(Scanner sc, String name, int step) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-        final int step = 3; //кол-во шагов в игре
+
         gameCount(sc, name, step);
     }
 
@@ -23,8 +23,7 @@ public class CheckForEven {
     }
 
     public static boolean gameCondition(Scanner sc, String name) {
-        final int maxNumber = 100; // максимальное рандомное
-        int randomNumber = (int) (random() * maxNumber);
+        int randomNumber = App.randomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
@@ -33,9 +32,7 @@ public class CheckForEven {
             return true;
         }
         String correctanswer = "yes".equals(answer) ? "no" : "yes";
-        System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctanswer + "'.\n"
-                + "Let's try again, " + name + "!");
+        App.noCorrectAnswerPrint(answer, correctanswer, name);
         return false;
-
     }
 }
