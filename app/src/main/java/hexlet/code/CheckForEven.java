@@ -8,6 +8,10 @@ public class CheckForEven {
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
         final int step = 3; //кол-во шагов в игре
+        gameCount(sc, name, step);
+    }
+
+    public static void gameCount(Scanner sc, String name, int step) {
         int i = 0;
         while (gameCondition(sc, name)) {
             i++;
@@ -30,13 +34,18 @@ public class CheckForEven {
         System.out.println("Your answer: " + answer);
         return answer;
     }
+    public static boolean gamePrintCorrect() {
+        System.out.println("Correct!");
+        return true;
+    }
 
     public static boolean gameCondition(Scanner sc, String name) {
         int randomNumber = gameRandomNumber();
         String answer = gamePrintNumber(sc);
-        if ((randomNumber % 2 == 0 && "yes".equals(answer)) || (randomNumber % 2 != 0 && "no".equals(answer))) {
-            System.out.println("Correct!");
-            return true;
+        if (randomNumber % 2 == 0 && "yes".equals(answer)) {
+            return gamePrintCorrect();
+        } else if (randomNumber % 2 != 0 && "no".equals(answer)) {
+            return gamePrintCorrect();
         } else {
             String correctanswer = "yes".equals(answer) ? "no" : "yes";
             System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctanswer + "'.\n"
