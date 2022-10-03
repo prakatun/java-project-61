@@ -13,7 +13,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
         final int step = 3; //кол-во шагов в играх
         String greet =
-                "Please enter the game number and press Enter.\n1 - Greet\n"
+                "Please enter the game number and press Enter.\n"
+                        + "1 - Greet\n"
                         + "2 - Even\n"
                         + "3 - Calc\n"
                         + "0 - Exit";
@@ -21,21 +22,31 @@ public class App {
         System.out.println(greet);
         String selectNumber = sc.next();
         choicePrint(selectNumber);
-        if ("1".equals(selectNumber)) {
-            Cli.sayHello(sc);
-            main(args);
-        } else if ("2".equals(selectNumber)) {
-            String name = Cli.sayHello(sc);
-            CheckForEven.game(sc, name, step);
-            main(args);
-        } else if ("3".equals(selectNumber)) {
-            String name = Cli.sayHello(sc);
-            Calculator.game(sc, name, step);
-            main(args);
-        } else if ("0".equals(selectNumber)) {
-            sc.close();
+        String name = "";
+
+        switch (selectNumber) {
+            case "1":
+                Cli.sayHello(sc);
+                main(args);
+                break;
+            case "2":
+                name = Cli.sayHello(sc);
+                CheckForEven.game(sc, name, step);
+                main(args);
+                break;
+            case "3":
+                name = Cli.sayHello(sc);
+                Calculator.game(sc, name, step);
+                main(args);
+                break;
+            case "0":
+                System.out.println("Exit");
+                sc.close();
+                break;
+            default:
+                sc.close();
         }
-        sc.close();
+
     }
 
     public static void choicePrint(String choice) {
@@ -51,4 +62,5 @@ public class App {
         final int maxNumber = 10; // максимальное рандомное
         return (int) (random() * maxNumber);
     }
+
 }
