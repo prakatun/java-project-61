@@ -18,10 +18,9 @@ public class App {
                         + "2 - Even\n"
                         + "3 - Calc\n"
                         + "0 - Exit";
-
         System.out.println(greet);
         String selectNumber = sc.next();
-        choicePrint(selectNumber);
+        System.out.println("Your choice: " + selectNumber);
         if ("1".equals(selectNumber)) {
             Cli.sayHello(sc);
             main(args);
@@ -37,10 +36,6 @@ public class App {
             sc.close();
         }
         sc.close();
-    }
-
-    public static void choicePrint(String choice) {
-        System.out.println("Your choice: " + choice);
     }
 
     public static void noCorrectAnswerPrint(String answer, String correctanswer, String name) {
