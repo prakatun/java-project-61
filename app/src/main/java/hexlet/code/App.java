@@ -32,8 +32,6 @@ public class App {
             String name = Cli.sayHello(sc);
             Calculator.game(sc, name, step);
             main(args);
-        } else if ("0".equals(selectNumber)) {
-            sc.close();
         }
         sc.close();
     }
