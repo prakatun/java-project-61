@@ -5,14 +5,15 @@ import hexlet.code.App;
 import java.util.Scanner;
 
 public class CheckForEven {
-    public static void game(Scanner sc, String name, int step) {
+    public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
 
-        gameCount(sc, name, step);
+        gameCount(sc, name);
     }
 
-    public static void gameCount(Scanner sc, String name, int step) {
+    public static void gameCount(Scanner sc, String name) {
         int i = 0;
+        final int step = 3;
         while (CheckForEven.gameCondition(sc, name)) {
             i++;
             if (i == step) {

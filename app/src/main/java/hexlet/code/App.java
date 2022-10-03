@@ -11,7 +11,6 @@ import static java.lang.Math.random;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        final int step = 3; //кол-во шагов в играх
         String greet =
                 "Please enter the game number and press Enter.\n"
                         + "1 - Greet\n"
@@ -26,11 +25,11 @@ public class App {
             main(args);
         } else if ("2".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            CheckForEven.game(sc, name, step);
+            CheckForEven.game(sc, name);
             main(args);
         } else if ("3".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            Calculator.game(sc, name, step);
+            Calculator.game(sc, name);
             main(args);
         }
         sc.close();

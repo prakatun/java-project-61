@@ -7,13 +7,15 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class Calculator {
-    public static void game(Scanner sc, String name, int step) {
+    public static void game(Scanner sc, String name) {
         System.out.println("What is the result of the expression?");
-        gameCount(sc, name, step);
+        gameCount(sc, name);
     }
 
-    public static void gameCount(Scanner sc, String name, int step) {
+
+    public static void gameCount(Scanner sc, String name) {
         int i = 0;
+        final int step = 3;
         while (Calculator.gameCondition(sc, name)) {
             i++;
             if (i == step) {
