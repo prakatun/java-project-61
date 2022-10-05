@@ -10,17 +10,24 @@ public class GreatestCommonDivisor {
         App.gameStep(sc, name, "GCD");
     }
 
-    public static int commonDivisor(int randomNumber1, int randomNumber2) {
-        int res = 1;
+    public static int greatestDivisor(int randomNumber1, int randomNumber2) {
+        int minDivisor = 1;
         for (int i = randomNumber1; i >= 1; i--) {
-            if (randomNumber1 % i == 0) {
-                res = i;
-                if (randomNumber2 % res == 0) {
-                    return res;
-                }
+            int result = commonDivisor(randomNumber1, randomNumber2, i);
+            if (minDivisor != result) {
+                return result;
             }
         }
-        return res;
+        return minDivisor;
+    }
+
+    public static int commonDivisor(int randomNumber1, int randomNumber2, int i) {
+        if (randomNumber1 % i == 0) {
+            if (randomNumber2 % i == 0) {
+                return i;
+            }
+        }
+        return 1;
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
@@ -30,7 +37,7 @@ public class GreatestCommonDivisor {
         System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
-        int result = commonDivisor(randomNumber1, randomNumber2);
+        int result = greatestDivisor(randomNumber1, randomNumber2);
         if (answer.equals(String.valueOf(result))) {
             System.out.println("Correct!");
             return true;
