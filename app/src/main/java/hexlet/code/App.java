@@ -11,26 +11,27 @@ import static java.lang.Math.random;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String greet =
-                "Please enter the game number and press Enter.\n"
-                        + "1 - Greet\n"
-                        + "2 - Even\n"
-                        + "3 - Calc\n"
-                        + "0 - Exit";
-        System.out.println(greet);
-        String selectNumber = sc.next();
-        System.out.println("Your choice: " + selectNumber);
-        if ("1".equals(selectNumber)) {
-            Cli.sayHello(sc);
-            main(args);
-        } else if ("2".equals(selectNumber)) {
-            String name = Cli.sayHello(sc);
-            CheckForEven.game(sc, name);
-            main(args);
-        } else if ("3".equals(selectNumber)) {
-            String name = Cli.sayHello(sc);
-            Calculator.game(sc, name);
-            main(args);
+        while (true) {
+            String greet =
+                    "Please enter the game number and press Enter.\n"
+                            + "1 - Greet\n"
+                            + "2 - Even\n"
+                            + "3 - Calc\n"
+                            + "0 - Exit";
+            System.out.println(greet);
+            String selectNumber = sc.next();
+            System.out.println("Your choice: " + selectNumber);
+            if ("1".equals(selectNumber)) {
+                Cli.sayHello(sc);
+            } else if ("2".equals(selectNumber)) {
+                String name = Cli.sayHello(sc);
+                CheckForEven.game(sc, name);
+            } else if ("3".equals(selectNumber)) {
+                String name = Cli.sayHello(sc);
+                Calculator.game(sc, name);
+            } else if ("0".equals(selectNumber)) {
+                break;
+            }
         }
         sc.close();
     }
@@ -41,26 +42,31 @@ public class App {
     }
 
     public static int randomNumber() {
-        final int maxNumber = 10; // максимальное рандомное
+        final int maxNumber = 10; //10 максимальное рандомное
         return (int) (random() * maxNumber);
+    }
+
+    public static boolean resultGames(Scanner sc, String name, String gameName) {
+        boolean gameLogic = false;
+        if ("Calc".equals(gameName)) {
+            gameLogic = Calculator.gameLogic(sc, name);
+        } else if ("Even".equals(gameName)) {
+            gameLogic = CheckForEven.gameLogic(sc, name);
+        }
+        return gameLogic;
     }
 
     public static void gameStep(Scanner sc, String name, String gameName) {
         final int step = 3; //кол-во шагов в играх
         int i = 0;
-
-        boolean gameLogic = false;
+        boolean resultGames = false;
         do {
             i++;
-            if ("Calc".equals(gameName)) {
-                gameLogic = Calculator.gameLogic(sc, name);
-            } else if ("Even".equals(gameName)) {
-                gameLogic = CheckForEven.gameLogic(sc, name);
-            }
+            resultGames = App.resultGames(sc, name, gameName);
             if (i == step) {
                 System.out.println("Congratulations, " + name + "!");
                 break;
             }
-        } while (gameLogic);
+        } while (resultGames);
     }
 }

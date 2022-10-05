@@ -19,8 +19,8 @@ public class CheckForEven {
             System.out.println("Correct!");
             return true;
         }
-        String correctanswer = "yes".equals(answer) ? "no" : "yes";
-        App.noCorrectAnswerPrint(answer, correctanswer, name);
+        String correctAnswer = "yes".equals(answer) ? "no" : "yes";
+        App.noCorrectAnswerPrint(answer, correctAnswer, name);
         return false;
     }
 }
