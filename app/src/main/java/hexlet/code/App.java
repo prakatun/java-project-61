@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calculator;
 import hexlet.code.games.CheckForEven;
 import hexlet.code.games.Cli;
+import hexlet.code.games.GreatestCommonDivisor;
 
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class App {
                             1 - Greet
                             2 - Even
                             3 - Calc
+                            4 - GCD
                             0 - Exit""";
 
             System.out.println(greet);
@@ -39,6 +41,9 @@ public class App {
         } else if ("3".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
             Calculator.game(sc, name);
+        } else if ("4".equals(selectNumber)) {
+            String name = Cli.sayHello(sc);
+            GreatestCommonDivisor.game(sc, name);
         }
     }
 
@@ -48,8 +53,8 @@ public class App {
     }
 
     public static int randomNumber() {
-        final int maxNumber = 10; //10 максимальное рандомное
-        return (int) (random() * maxNumber);
+        final int maxNumber = 19; // 9 + 1 максимальное рандомное
+        return 1 + (int) (random() * maxNumber);
     }
 
     public static boolean resultGames(Scanner sc, String name, String gameName) {
@@ -58,6 +63,8 @@ public class App {
             gameLogic = Calculator.gameLogic(sc, name);
         } else if ("Even".equals(gameName)) {
             gameLogic = CheckForEven.gameLogic(sc, name);
+        } else if ("GCD".equals(gameName)) {
+            gameLogic = GreatestCommonDivisor.gameLogic(sc, name);
         }
         return gameLogic;
     }
