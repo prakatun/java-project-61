@@ -26,23 +26,18 @@ public class Calculator {
     public static boolean gameLogic(Scanner sc, String name) {
 
         Character randomOperator = randomOperator();
-        int randomNumber1 = App.randomNumber(); //0-100
-        int randomNumber2 = App.randomNumber(); //0-100
+        int randomNumber1 = App.randomNumber();
+        int randomNumber2 = App.randomNumber();
         int result;
 
         System.out.println("Question: " + randomNumber1 + " " + randomOperator + " " + randomNumber2);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
-        switch (randomOperator) {
-            case '+':
-                result = randomNumber1 + randomNumber2;
-                break;
-            case '-':
-                result = randomNumber1 - randomNumber2;
-                break;
-            default:
-                result = randomNumber1 * randomNumber2;
-        }
+        result = switch (randomOperator) {
+            case '+' -> randomNumber1 + randomNumber2;
+            case '-' -> randomNumber1 - randomNumber2;
+            default -> randomNumber1 * randomNumber2;
+        };
 
         if (answer.equals(String.valueOf(result))) {
             System.out.println("Correct!");

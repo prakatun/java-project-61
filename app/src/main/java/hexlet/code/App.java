@@ -4,12 +4,17 @@ import hexlet.code.games.Calculator;
 import hexlet.code.games.CheckForEven;
 import hexlet.code.games.Cli;
 import hexlet.code.games.GreatestCommonDivisor;
+import hexlet.code.games.ArithmeticProgression;
 
 import java.util.Scanner;
 
 import static java.lang.Math.random;
 
 public class App {
+    static final int STEP = 3; //кол-во шагов в играх
+    static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
+    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String numberMenu = "";
@@ -21,6 +26,7 @@ public class App {
                             2 - Even
                             3 - Calc
                             4 - GCD
+                            5 - Progression
                             0 - Exit""";
 
             System.out.println(greet);
@@ -44,17 +50,10 @@ public class App {
         } else if ("4".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
             GreatestCommonDivisor.game(sc, name);
+        } else if ("5".equals(selectNumber)) {
+            String name = Cli.sayHello(sc);
+            ArithmeticProgression.game(sc, name);
         }
-    }
-
-    public static void noCorrectAnswerPrint(String answer, String correctanswer, String name) {
-        System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctanswer + "'.\n"
-                + "Let's try again, " + name + "!");
-    }
-
-    public static int randomNumber() {
-        final int maxNumber = 19; // 9 + 1 максимальное рандомное
-        return 1 + (int) (random() * maxNumber);
     }
 
     public static boolean resultGames(Scanner sc, String name, String gameName) {
@@ -65,21 +64,33 @@ public class App {
             gameLogic = CheckForEven.gameLogic(sc, name);
         } else if ("GCD".equals(gameName)) {
             gameLogic = GreatestCommonDivisor.gameLogic(sc, name);
+        } else if ("Progression".equals(gameName)) {
+            gameLogic = ArithmeticProgression.gameLogic(sc, name);
         }
+
         return gameLogic;
     }
 
     public static void gameStep(Scanner sc, String name, String gameName) {
-        final int step = 3; //кол-во шагов в играх
+
         int i = 0;
-        boolean resultGames;
-        do {
-            i++;
-            resultGames = App.resultGames(sc, name, gameName);
-            if (i == step) {
+        boolean resultGames = true;
+        while (i <= STEP && resultGames) {
+            if (i == STEP) {
                 System.out.println("Congratulations, " + name + "!");
                 break;
             }
-        } while (resultGames);
+            resultGames = App.resultGames(sc, name, gameName);
+            i++;
+        }
+    }
+
+    public static void noCorrectAnswerPrint(String answer, String correctanswer, String name) {
+        System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctanswer + "'.\n"
+                + "Let's try again, " + name + "!");
+    }
+
+    public static int randomNumber() {
+        return FROM_NUMBER + (int) (random() * TO_NUMBER);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class GreatestCommonDivisor {
     public static void game(Scanner sc, String name) {
-        System.out.println("What is the result of the expression?");
+        System.out.println("Find the greatest common divisor of given numbers.");
         App.gameStep(sc, name, "GCD");
     }
 
