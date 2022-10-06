@@ -49,7 +49,6 @@ public class Engine {
         } else if ("Prime".equals(gameName)) {
             gameLogic = PrimeNumber.gameLogic(sc, name);
         }
-
         return gameLogic;
     }
 
