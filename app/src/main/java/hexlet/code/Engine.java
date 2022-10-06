@@ -13,7 +13,7 @@ import static java.lang.Math.random;
 public class Engine {
     static final int STEP = 3; //кол-во шагов в играх
     static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
-    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
+    static final int TO_NUMBER = 99; // до _ диапазон рандомных чисел
 
     public static void selectGame(Scanner sc, String selectNumber) {
         if ("1".equals(selectNumber)) {

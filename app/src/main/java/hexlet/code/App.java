@@ -6,6 +6,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String numberMenu = "";
         while (!"0".equals(numberMenu) && !"1".equals(numberMenu)) {
+
             String greet =
                     """
                             Please enter the game number and press Enter.

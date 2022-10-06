@@ -53,6 +53,7 @@ public class ArithmeticProgression {
             System.out.println("Correct!");
             return true;
         }
+
         Engine.noCorrectAnswerPrint(answer, String.valueOf(correctAnswer), name);
         return false;
     }

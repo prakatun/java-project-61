@@ -25,6 +25,7 @@ public class PrimeNumber {
             System.out.println("Correct!");
             return true;
         }
+
         String correctAnswer = "yes".equals(answer) ? "no" : "yes";
         Engine.noCorrectAnswerPrint(answer, correctAnswer, name);
         return false;

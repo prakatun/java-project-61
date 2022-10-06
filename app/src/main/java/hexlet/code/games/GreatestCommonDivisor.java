@@ -42,6 +42,7 @@ public class GreatestCommonDivisor {
             System.out.println("Correct!");
             return true;
         }
+
         Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
     }
