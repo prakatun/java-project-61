@@ -5,9 +5,9 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class GreatestCommonDivisor {
-    public static boolean game(Scanner sc, String name) {
+    public static void game(Scanner sc, String name) {
         System.out.println("Find the greatest common divisor of given numbers.");
-        return Engine.gameStep(sc, name, "GCD");
+        Engine.gameStep(sc, name, "GCD");
     }
 
     public static int greatestDivisor(int randomNumber1, int randomNumber2) {
@@ -42,7 +42,6 @@ public class GreatestCommonDivisor {
             System.out.println("Correct!");
             return true;
         }
-
         Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
     }

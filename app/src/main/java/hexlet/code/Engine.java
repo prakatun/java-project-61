@@ -13,29 +13,27 @@ import static java.lang.Math.random;
 public class Engine {
     static final int STEP = 3; //кол-во шагов в играх
     static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
-    static final int TO_NUMBER = 99; // до _ диапазон рандомных чисел
+    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
 
-    public static boolean selectGame(Scanner sc, String selectNumber) {
-        boolean result = true;
+    public static void selectGame(Scanner sc, String selectNumber) {
         if ("1".equals(selectNumber)) {
             Cli.sayHello(sc);
         } else if ("2".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            result = CheckForEven.game(sc, name);
+            CheckForEven.game(sc, name);
         } else if ("3".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            result = Calculator.game(sc, name);
+            Calculator.game(sc, name);
         } else if ("4".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            result = GreatestCommonDivisor.game(sc, name);
+            GreatestCommonDivisor.game(sc, name);
         } else if ("5".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            result = ArithmeticProgression.game(sc, name);
+            ArithmeticProgression.game(sc, name);
         } else if ("6".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
-            result = PrimeNumber.game(sc, name);
+            PrimeNumber.game(sc, name);
         }
-        return result;
     }
 
     public static boolean resultGames(Scanner sc, String name, String gameName) {
@@ -54,19 +52,18 @@ public class Engine {
         return gameLogic;
     }
 
-    public static boolean gameStep(Scanner sc, String name, String gameName) {
+    public static void gameStep(Scanner sc, String name, String gameName) {
 
         int i = 0;
         boolean resultGames = true;
         while (i <= STEP && resultGames) {
             if (i == STEP) {
                 System.out.println("Congratulations, " + name + "!");
-                return false;
+                break;
             }
             resultGames = resultGames(sc, name, gameName);
             i++;
         }
-        return resultGames;
     }
 
     public static void noCorrectAnswerPrint(String answer, String correctanswer, String name) {

@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class PrimeNumber {
 
-    public static boolean game(Scanner sc, String name) {
+    public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        return Engine.gameStep(sc, name, "Prime");
+        Engine.gameStep(sc, name, "Prime");
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
@@ -25,7 +25,6 @@ public class PrimeNumber {
             System.out.println("Correct!");
             return true;
         }
-
         String correctAnswer = "yes".equals(answer) ? "no" : "yes";
         Engine.noCorrectAnswerPrint(answer, correctAnswer, name);
         return false;

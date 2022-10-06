@@ -7,9 +7,9 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class ArithmeticProgression {
-    public static boolean game(Scanner sc, String name) {
+    public static void game(Scanner sc, String name) {
         System.out.println("What number is missing in the progression?");
-        return Engine.gameStep(sc, name, "Progression");
+        Engine.gameStep(sc, name, "Progression");
     }
 
     public static int randomDistance() {
@@ -53,7 +53,6 @@ public class ArithmeticProgression {
             System.out.println("Correct!");
             return true;
         }
-
         Engine.noCorrectAnswerPrint(answer, String.valueOf(correctAnswer), name);
         return false;
     }

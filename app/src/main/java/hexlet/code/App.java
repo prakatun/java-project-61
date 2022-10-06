@@ -6,7 +6,6 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String numberMenu = "";
         while (!"0".equals(numberMenu) && !"1".equals(numberMenu)) {
-
             String greet =
                     """
                             Please enter the game number and press Enter.
@@ -22,10 +21,7 @@ public class App {
             String selectNumber = sc.next();
             System.out.println("Your choice: " + selectNumber);
             numberMenu = selectNumber;
-            boolean result = Engine.selectGame(sc, selectNumber);
-            if (!result) {
-                break;
-            }
+            Engine.selectGame(sc, selectNumber);
         }
         sc.close();
     }
