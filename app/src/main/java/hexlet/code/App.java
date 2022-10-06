@@ -21,7 +21,10 @@ public class App {
             String selectNumber = sc.next();
             System.out.println("Your choice: " + selectNumber);
             numberMenu = selectNumber;
-            Engine.selectGame(sc, selectNumber);
+            boolean result = Engine.selectGame(sc, selectNumber);
+            if (!result) {
+                break;
+            }
         }
         sc.close();
     }
