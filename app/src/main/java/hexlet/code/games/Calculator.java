@@ -7,9 +7,9 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class Calculator {
-    public static void game(Scanner sc, String name) {
+    public static boolean game(Scanner sc, String name) {
         System.out.println("What is the result of the expression?");
-        Engine.gameStep(sc, name, "Calc");
+        return Engine.gameStep(sc, name, "Calc");
     }
 
     public static Character randomOperator() {

@@ -5,9 +5,9 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class CheckForEven {
-    public static void game(Scanner sc, String name) {
+    public static boolean game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        Engine.gameStep(sc, name, "Even");
+        return Engine.gameStep(sc, name, "Even");
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
