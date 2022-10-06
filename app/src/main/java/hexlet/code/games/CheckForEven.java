@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class CheckForEven {
     public static void game(Scanner sc, String name) {
-        System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         Engine.gameStep(sc, name, "Even");
     }
 
