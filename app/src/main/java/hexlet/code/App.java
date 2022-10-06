@@ -5,6 +5,7 @@ import hexlet.code.games.CheckForEven;
 import hexlet.code.games.Cli;
 import hexlet.code.games.GreatestCommonDivisor;
 import hexlet.code.games.ArithmeticProgression;
+import hexlet.code.games.PrimeNumber;
 
 import java.util.Scanner;
 
@@ -27,6 +28,7 @@ public class App {
                             3 - Calc
                             4 - GCD
                             5 - Progression
+                            6 - Prime
                             0 - Exit""";
 
             System.out.println(greet);
@@ -53,6 +55,9 @@ public class App {
         } else if ("5".equals(selectNumber)) {
             String name = Cli.sayHello(sc);
             ArithmeticProgression.game(sc, name);
+        } else if ("6".equals(selectNumber)) {
+            String name = Cli.sayHello(sc);
+            PrimeNumber.game(sc, name);
         }
     }
 
@@ -66,6 +71,8 @@ public class App {
             gameLogic = GreatestCommonDivisor.gameLogic(sc, name);
         } else if ("Progression".equals(gameName)) {
             gameLogic = ArithmeticProgression.gameLogic(sc, name);
+        } else if ("Prime".equals(gameName)) {
+            gameLogic = PrimeNumber.gameLogic(sc, name);
         }
 
         return gameLogic;
