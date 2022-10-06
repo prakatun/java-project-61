@@ -1,13 +1,13 @@
 package hexlet.code.games;
 
-import hexlet.code.App;
+import hexlet.code.Engine;
 
 import java.util.Scanner;
 
 public class GreatestCommonDivisor {
     public static void game(Scanner sc, String name) {
         System.out.println("Find the greatest common divisor of given numbers.");
-        App.gameStep(sc, name, "GCD");
+        Engine.gameStep(sc, name, "GCD");
     }
 
     public static int greatestDivisor(int randomNumber1, int randomNumber2) {
@@ -31,8 +31,8 @@ public class GreatestCommonDivisor {
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
-        int randomNumber1 = App.randomNumber(); //0-100
-        int randomNumber2 = App.randomNumber(); //0-100
+        int randomNumber1 = Engine.randomNumber(); //0-100
+        int randomNumber2 = Engine.randomNumber(); //0-100
 
         System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
         String answer = sc.next();
@@ -42,7 +42,7 @@ public class GreatestCommonDivisor {
             System.out.println("Correct!");
             return true;
         }
-        App.noCorrectAnswerPrint(answer, String.valueOf(result), name);
+        Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
     }
 }

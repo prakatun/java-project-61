@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.App;
+import hexlet.code.Engine;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import static java.lang.Math.random;
 public class Calculator {
     public static void game(Scanner sc, String name) {
         System.out.println("What is the result of the expression?");
-        App.gameStep(sc, name, "Calc");
+        Engine.gameStep(sc, name, "Calc");
     }
 
     public static Character randomOperator() {
@@ -26,8 +26,8 @@ public class Calculator {
     public static boolean gameLogic(Scanner sc, String name) {
 
         Character randomOperator = randomOperator();
-        int randomNumber1 = App.randomNumber();
-        int randomNumber2 = App.randomNumber();
+        int randomNumber1 = Engine.randomNumber();
+        int randomNumber2 = Engine.randomNumber();
         int result;
 
         System.out.println("Question: " + randomNumber1 + " " + randomOperator + " " + randomNumber2);
@@ -43,7 +43,7 @@ public class Calculator {
             System.out.println("Correct!");
             return true;
         }
-        App.noCorrectAnswerPrint(answer, String.valueOf(result), name);
+        Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
     }
 }

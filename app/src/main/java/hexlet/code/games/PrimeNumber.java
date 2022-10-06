@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.App;
+import hexlet.code.Engine;
 
 import java.math.BigInteger;
 import java.util.Scanner;
@@ -9,11 +10,11 @@ public class PrimeNumber {
 
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        App.gameStep(sc, name, "Prime");
+        Engine.gameStep(sc, name, "Prime");
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
-        int randomNumber = App.randomNumber();
+        int randomNumber = Engine.randomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
@@ -26,7 +27,7 @@ public class PrimeNumber {
             return true;
         }
         String correctAnswer = "yes".equals(answer) ? "no" : "yes";
-        App.noCorrectAnswerPrint(answer, correctAnswer, name);
+        Engine.noCorrectAnswerPrint(answer, correctAnswer, name);
         return false;
     }
 }

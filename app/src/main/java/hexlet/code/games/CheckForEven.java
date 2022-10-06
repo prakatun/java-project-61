@@ -1,17 +1,17 @@
 package hexlet.code.games;
 
-import hexlet.code.App;
+import hexlet.code.Engine;
 
 import java.util.Scanner;
 
 public class CheckForEven {
     public static void game(Scanner sc, String name) {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
-        App.gameStep(sc, name, "Even");
+        Engine.gameStep(sc, name, "Even");
     }
 
     public static boolean gameLogic(Scanner sc, String name) {
-        int randomNumber = App.randomNumber();
+        int randomNumber = Engine.randomNumber();
         System.out.println("Question: " + randomNumber);
         String answer = sc.next();
         System.out.println("Your answer: " + answer);
@@ -20,7 +20,7 @@ public class CheckForEven {
             return true;
         }
         String correctAnswer = "yes".equals(answer) ? "no" : "yes";
-        App.noCorrectAnswerPrint(answer, correctAnswer, name);
+        Engine.noCorrectAnswerPrint(answer, correctAnswer, name);
         return false;
     }
 }

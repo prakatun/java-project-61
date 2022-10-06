@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.App;
+import hexlet.code.Engine;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import static java.lang.Math.random;
 public class ArithmeticProgression {
     public static void game(Scanner sc, String name) {
         System.out.println("What number is missing in the progression?");
-        App.gameStep(sc, name, "Progression");
+        Engine.gameStep(sc, name, "Progression");
     }
 
     public static int randomDistance() {
@@ -29,7 +29,7 @@ public class ArithmeticProgression {
     }
 
     public static int progression(int quantityNumber, int interval, int index) {
-        int start = App.randomNumber();
+        int start = Engine.randomNumber();
         int answer = 0;
         StringBuilder result = new StringBuilder();
         for (int i = 0; i <= quantityNumber; i++) {
@@ -53,7 +53,7 @@ public class ArithmeticProgression {
             System.out.println("Correct!");
             return true;
         }
-        App.noCorrectAnswerPrint(answer, String.valueOf(correctAnswer), name);
+        Engine.noCorrectAnswerPrint(answer, String.valueOf(correctAnswer), name);
         return false;
     }
 }
