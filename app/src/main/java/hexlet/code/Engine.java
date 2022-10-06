@@ -74,5 +74,6 @@ public class Engine {
     public static int randomNumber() {
         return FROM_NUMBER + (int) (random() * TO_NUMBER);
     }
+
 }
 
