@@ -34,18 +34,10 @@ public class Engine {
     public static boolean resultGames(String gameName, String name) {
         Scanner sc = new Scanner(System.in);
         boolean gameLogic;
-        String answer;
-        String correctAnswer;
+
         if ("Even".equals(gameName)) {
             gameLogic = EvenNumber.gameLogic();
-            answer = sc.next();
-            System.out.println("Your answer: " + answer);
-            if (("no".equals(answer) && !gameLogic) || ("yes".equals(answer) && gameLogic)) {
-                System.out.println("Correct!");
-                return true;
-            }
-            correctAnswer = "yes".equals(answer) ? "no" : "yes";
-            noCorrectAnswerPrint(answer, correctAnswer, name);
+            return getResultAnswer(sc, gameLogic, name);
         } else if ("Calc".equals(gameName)) {
             return Calculator.gameLogic(name);
         } else if ("GCD".equals(gameName)) {
@@ -54,22 +46,27 @@ public class Engine {
             return ArithmeticProgression.gameLogic(name);
         } else if ("Prime".equals(gameName)) {
             gameLogic = PrimeNumber.gameLogic(name);
-            answer = sc.next();
-            System.out.println("Your answer: " + answer);
-            if (("no".equals(answer) && !gameLogic) || ("yes".equals(answer) && gameLogic)) {
-                System.out.println("Correct!");
-                return true;
-            }
-            correctAnswer = "yes".equals(answer) ? "no" : "yes";
-            noCorrectAnswerPrint(answer, correctAnswer, name);
+            return getResultAnswer(sc, gameLogic, name);
         }
         return false;
     }
 
-
     public static void noCorrectAnswerPrint(String answer, String correctAnswer, String name) {
         System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.\n"
                 + "Let's try again, " + name + "!");
+    }
+
+    public static boolean getResultAnswer(Scanner sc, boolean gameLogic, String name) {
+        String answer = sc.next();
+        String correctAnswer;
+        System.out.println("Your answer: " + answer);
+        if (("no".equals(answer) && !gameLogic) || ("yes".equals(answer) && gameLogic)) {
+            System.out.println("Correct!");
+            return true;
+        }
+        correctAnswer = "yes".equals(answer) ? "no" : "yes";
+        noCorrectAnswerPrint(answer, correctAnswer, name);
+        return false;
     }
 
     public static void printRulesOfTheGame(String gameName) {
