@@ -7,27 +7,11 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class Calculator {
-    public static boolean game(Scanner sc, String name) {
-        System.out.println("What is the result of the expression?");
-        return Engine.gameStep(sc, name, "Calc");
-    }
-
-    public static Character randomOperator() {
-        final int maxNumber = 3; // максимальное рандомное
-        int randomNumber = (int) (random() * maxNumber);
-        if (randomNumber == 0) {
-            return '-';
-        } else if (randomNumber == 1) {
-            return '+';
-        }
-        return '*';
-    }
-
-    public static boolean gameLogic(Scanner sc, String name) {
-
+    public static boolean gameLogic(String name) {
+        Scanner sc = new Scanner(System.in);
         Character randomOperator = randomOperator();
-        int randomNumber1 = Engine.randomNumber();
-        int randomNumber2 = Engine.randomNumber();
+        int randomNumber1 = randomNumber();
+        int randomNumber2 = randomNumber();
         int result;
 
         System.out.println("Question: " + randomNumber1 + " " + randomOperator + " " + randomNumber2);
@@ -36,7 +20,8 @@ public class Calculator {
         result = switch (randomOperator) {
             case '+' -> randomNumber1 + randomNumber2;
             case '-' -> randomNumber1 - randomNumber2;
-            default -> randomNumber1 * randomNumber2;
+            case '*' -> randomNumber1 * randomNumber2;
+            default -> throw new RuntimeException("No such operator");
         };
 
         if (answer.equals(String.valueOf(result))) {
@@ -45,5 +30,21 @@ public class Calculator {
         }
         Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
+    }
+
+    public static Character randomOperator() {
+        final int maxNumber = 3; // максимальное рандомное
+        int randomNumber = (int) (random() * maxNumber);
+        return switch (randomNumber) {
+            case 0 -> '-';
+            case 1 -> '+';
+            default -> '*';
+        };
+    }
+
+    public static int randomNumber() {
+        final int fromNumber = 1; // от _ диапазон рандомных чисел
+        final int toNumber = 100; // до _ диапазон рандомных чисел
+        return fromNumber + (int) (random() * toNumber);
     }
 }

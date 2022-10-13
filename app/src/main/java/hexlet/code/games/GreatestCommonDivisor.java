@@ -4,35 +4,13 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 
+import static java.lang.Math.random;
+
 public class GreatestCommonDivisor {
-    public static boolean game(Scanner sc, String name) {
-        System.out.println("Find the greatest common divisor of given numbers.");
-        return Engine.gameStep(sc, name, "GCD");
-    }
-
-    public static int greatestDivisor(int randomNumber1, int randomNumber2) {
-        int minDivisor = 1;
-        for (int i = randomNumber1; i >= 1; i--) {
-            int result = commonDivisor(randomNumber1, randomNumber2, i);
-            if (minDivisor != result) {
-                return result;
-            }
-        }
-        return minDivisor;
-    }
-
-    public static int commonDivisor(int randomNumber1, int randomNumber2, int i) {
-        if (randomNumber1 % i == 0) {
-            if (randomNumber2 % i == 0) {
-                return i;
-            }
-        }
-        return 1;
-    }
-
-    public static boolean gameLogic(Scanner sc, String name) {
-        int randomNumber1 = Engine.randomNumber(); //0-100
-        int randomNumber2 = Engine.randomNumber(); //0-100
+    public static boolean gameLogic(String name) {
+        Scanner sc = new Scanner(System.in);
+        int randomNumber1 = randomNumber();
+        int randomNumber2 = randomNumber();
 
         System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
         String answer = sc.next();
@@ -44,5 +22,21 @@ public class GreatestCommonDivisor {
         }
         Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
         return false;
+    }
+
+    public static int greatestDivisor(int randomNumber1, int randomNumber2) {
+        int minDivisor = 1;
+        for (int i = randomNumber1; i >= 1; i--) {
+            if (randomNumber1 % i == 0 && randomNumber2 % i == 0) {
+                return i;
+            }
+        }
+        return minDivisor;
+    }
+
+    public static int randomNumber() {
+        final int fromNumber = 1; // от _ диапазон рандомных чисел
+        final int toNumber = 100; // до _ диапазон рандомных чисел
+        return fromNumber + (int) (random() * toNumber);
     }
 }
