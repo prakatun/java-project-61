@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import java.math.BigInteger;
-import java.util.Scanner;
 
 import static java.lang.Math.random;
 
