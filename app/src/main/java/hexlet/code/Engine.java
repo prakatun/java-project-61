@@ -45,7 +45,7 @@ public class Engine {
         } else if ("Progression".equals(gameName)) {
             result = ArithmeticProgression.gameLogic(name);
         } else if ("Prime".equals(gameName)) {
-            gameLogic = PrimeNumber.gameLogic(name);
+            gameLogic = PrimeNumber.gameLogic();
             result = getResultAnswer(sc, gameLogic, name);
         }
         return result;
