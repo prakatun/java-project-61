@@ -34,21 +34,21 @@ public class Engine {
     public static boolean resultGames(String gameName, String name) {
         Scanner sc = new Scanner(System.in);
         boolean gameLogic;
-
+        boolean result = false;
         if ("Even".equals(gameName)) {
             gameLogic = EvenNumber.gameLogic();
-            return getResultAnswer(sc, gameLogic, name);
+            result = getResultAnswer(sc, gameLogic, name);
         } else if ("Calc".equals(gameName)) {
-            return Calculator.gameLogic(name);
+            result = Calculator.gameLogic(name);
         } else if ("GCD".equals(gameName)) {
-            return GreatestCommonDivisor.gameLogic(name);
+            result = GreatestCommonDivisor.gameLogic(name);
         } else if ("Progression".equals(gameName)) {
-            return ArithmeticProgression.gameLogic(name);
+            result = ArithmeticProgression.gameLogic(name);
         } else if ("Prime".equals(gameName)) {
             gameLogic = PrimeNumber.gameLogic(name);
-            return getResultAnswer(sc, gameLogic, name);
+            result = getResultAnswer(sc, gameLogic, name);
         }
-        return false;
+        return result;
     }
 
     public static void noCorrectAnswerPrint(String answer, String correctAnswer, String name) {
