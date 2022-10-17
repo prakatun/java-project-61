@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
+import hexlet.code.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,14 @@ import java.util.Scanner;
 
 import static java.lang.Math.random;
 
-public class ArithmeticProgression {
-    public static boolean gameLogic(String name) {
+public class ArithmeticProgression implements Game {
+    private final String[] answers = new String[2];
+
+    /**
+     * <p>Запускает ход игры.</p>
+     */
+    @Override
+    public void runGame() {
         Scanner sc = new Scanner(System.in);
 
         final int maxNumber = 5; // максимальное рандомное maxNumber + minNumber
@@ -19,18 +25,14 @@ public class ArithmeticProgression {
         int randomIndex = (int) (random() * randomDistance - 1);
 
         List<Integer> listProgression = generateProgression(randomDistance,
-                                                            randomInterval,
-                                                            randomIndex);
+                randomInterval,
+                randomIndex);
 
         String answer = sc.next();
 
         System.out.println("Your answer: " + answer);
-        if (answer.equals(String.valueOf(listProgression.get(randomIndex)))) {
-            System.out.println("Correct!");
-            return true;
-        }
-        Engine.noCorrectAnswerPrint(answer, String.valueOf(listProgression.get(randomIndex)), name);
-        return false;
+        answers[0] = answer;
+        answers[1] = String.valueOf(listProgression.get(randomIndex));
     }
 
     public static List<Integer> generateProgression(int quantityNumber, int interval, int index) {
@@ -54,5 +56,23 @@ public class ArithmeticProgression {
         final int fromNumber = 1; // от _ диапазон рандомных чисел
         final int toNumber = 100; // до _ диапазон рандомных чисел
         return fromNumber + (int) (random() * toNumber);
+    }
+
+    /**
+     * <p>Возвращает ответ пользователя и правильный ответ.</p>
+     * @return String[]
+     */
+    @Override
+    public String[] getQuestionAndAnswer() {
+        return answers;
+    }
+
+    /**
+     * <p>Правила игры.</p>
+     * @return String
+     */
+    @Override
+    public String getRulesOfTheGame() {
+        return "What number is missing in the progression?";
     }
 }

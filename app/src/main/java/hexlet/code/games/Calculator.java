@@ -1,13 +1,19 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
+import hexlet.code.Game;
 
 import java.util.Scanner;
 
 import static java.lang.Math.random;
 
-public class Calculator {
-    public static boolean gameLogic(String name) {
+public class Calculator implements Game {
+    private final String[] answers = new String[2];
+
+    /**
+     * <p>Запускает ход игры.</p>
+     */
+    @Override
+    public void runGame() {
         Scanner sc = new Scanner(System.in);
         Character randomOperator = randomOperator();
         int randomNumber1 = randomNumber();
@@ -23,13 +29,26 @@ public class Calculator {
             case '*' -> randomNumber1 * randomNumber2;
             default -> throw new RuntimeException("No such operator");
         };
+        answers[0] = answer;
+        answers[1] = String.valueOf(result);
+    }
 
-        if (answer.equals(String.valueOf(result))) {
-            System.out.println("Correct!");
-            return true;
-        }
-        Engine.noCorrectAnswerPrint(answer, String.valueOf(result), name);
-        return false;
+    /**
+     * <p>Возвращает ответ пользователя и правильный ответ.</p>
+     * @return String[]
+     */
+    @Override
+    public String[] getQuestionAndAnswer() {
+        return answers;
+    }
+
+    /**
+     * <p>Правила игры.</p>
+     * @return String
+     */
+    @Override
+    public String getRulesOfTheGame() {
+        return "What is the result of the expression?";
     }
 
     public static Character randomOperator() {
@@ -38,7 +57,8 @@ public class Calculator {
         return switch (randomNumber) {
             case 0 -> '-';
             case 1 -> '+';
-            default -> '*';
+            case 2 -> '*';
+            default ->  throw new RuntimeException("No operator found");
         };
     }
 
