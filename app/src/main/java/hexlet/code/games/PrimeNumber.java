@@ -1,47 +1,32 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
-
 import java.math.BigInteger;
-import java.util.Scanner;
 
 import static java.lang.Math.random;
 
 public class PrimeNumber implements Game {
-    private final String[] answers = new String[2];
+    static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
+    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
 
     /**
-     * <p>Запускает ход игры.</p>
-     */
-    @Override
-    public void runGame() {
-        Scanner sc = new Scanner(System.in);
-        final int fromNumber = 1; // от _ диапазон рандомных чисел
-        final int toNumber = 100; // до _ диапазон рандомных чисел
-        int randomNumber = fromNumber + (int) (random() * toNumber);
-        System.out.println("Question: " + randomNumber);
-        String answer = sc.next();
-        System.out.println("Your answer: " + answer);
-        BigInteger b = BigInteger.valueOf(randomNumber);
-        if (b.isProbablePrime(randomNumber)) {
-            answers[0] = "yes";
-        } else {
-            answers[0] = "no";
-        }
-        answers[1] = answer;
-    }
-
-    /**
-     * <p>Возвращает ответ пользователя и правильный ответ.</p>
+     * <p>Возвращает правильный ответ и значение для вопроса .</p>
+     *
      * @return String[]
      */
     @Override
     public String[] getQuestionAndAnswer() {
-        return answers;
+        String[] question = new String[2];
+        int randomNumber = FROM_NUMBER + (int) (random() * TO_NUMBER);
+
+        BigInteger b = BigInteger.valueOf(randomNumber);
+        question[0] = b.isProbablePrime(randomNumber) ? "yes" : "no";
+        question[1] = String.valueOf(randomNumber);
+        return question;
     }
 
     /**
      * <p>Правила игры.</p>
+     *
      * @return String
      */
     @Override

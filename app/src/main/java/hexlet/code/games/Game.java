@@ -1,7 +1,6 @@
-package hexlet.code;
+package hexlet.code.games;
 
 public interface Game {
-    void runGame();
 
     String[] getQuestionAndAnswer();
 

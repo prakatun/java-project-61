@@ -1,49 +1,38 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
-
-import java.util.Scanner;
-
 import static java.lang.Math.random;
 
 public class Calculator implements Game {
-    private final String[] answers = new String[2];
+    static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
+    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
 
     /**
-     * <p>Запускает ход игры.</p>
+     * <p>Возвращает правильный ответ и значение для вопроса .</p>
+     *
+     * @return String[]
      */
     @Override
-    public void runGame() {
-        Scanner sc = new Scanner(System.in);
+    public String[] getQuestionAndAnswer() {
         Character randomOperator = randomOperator();
+        String[] question = new String[2];
         int randomNumber1 = randomNumber();
         int randomNumber2 = randomNumber();
         int result;
 
-        System.out.println("Question: " + randomNumber1 + " " + randomOperator + " " + randomNumber2);
-        String answer = sc.next();
-        System.out.println("Your answer: " + answer);
         result = switch (randomOperator) {
             case '+' -> randomNumber1 + randomNumber2;
             case '-' -> randomNumber1 - randomNumber2;
             case '*' -> randomNumber1 * randomNumber2;
             default -> throw new RuntimeException("No such operator");
         };
-        answers[0] = answer;
-        answers[1] = String.valueOf(result);
-    }
-
-    /**
-     * <p>Возвращает ответ пользователя и правильный ответ.</p>
-     * @return String[]
-     */
-    @Override
-    public String[] getQuestionAndAnswer() {
-        return answers;
+        question[0] = String.valueOf(result);
+        question[1] = randomNumber1 + " " + randomOperator + " " + randomNumber2;
+        return question;
     }
 
     /**
      * <p>Правила игры.</p>
+     *
      * @return String
      */
     @Override
@@ -54,17 +43,11 @@ public class Calculator implements Game {
     public static Character randomOperator() {
         final int maxNumber = 3; // максимальное рандомное
         int randomNumber = (int) (random() * maxNumber);
-        return switch (randomNumber) {
-            case 0 -> '-';
-            case 1 -> '+';
-            case 2 -> '*';
-            default ->  throw new RuntimeException("No operator found");
-        };
+        Character[] operator = {'-', '+', '*'};
+        return operator[randomNumber];
     }
 
     public static int randomNumber() {
-        final int fromNumber = 1; // от _ диапазон рандомных чисел
-        final int toNumber = 100; // до _ диапазон рандомных чисел
-        return fromNumber + (int) (random() * toNumber);
+        return FROM_NUMBER + (int) (random() * TO_NUMBER);
     }
 }

@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.games.Game;
+
 import java.util.Scanner;
 
 public class Engine {
@@ -14,12 +16,16 @@ public class Engine {
         System.out.println(game.getRulesOfTheGame());
         int i = 0;
         while (i < STEP) {
-            game.runGame();
-            String[] answer = game.getQuestionAndAnswer();
-            if (answer[0].equals(answer[1])) {
+            String[] question = game.getQuestionAndAnswer();
+
+            System.out.println("Question: " + question[1]);
+            String answer = sc.next();
+            System.out.println("Your answer: " + answer);
+
+            if (answer.equals(question[0])) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + answer[0] + "' is wrong answer ;(. Correct answer was '" + answer[1] + "'.\n"
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + question[0] + "'.\n"
                         + "Let's try again, " + name + "!");
                 return;
             }

@@ -1,14 +1,14 @@
 package hexlet.code;
 
-import static hexlet.code.Engine.game;
-
 import hexlet.code.games.Calculator;
-import hexlet.code.games.ArithmeticProgression;
+import hexlet.code.games.EvenNumber;
 import hexlet.code.games.PrimeNumber;
 import hexlet.code.games.GreatestCommonDivisor;
-import hexlet.code.games.EvenNumber;
+import hexlet.code.games.ArithmeticProgression;
 
 import java.util.Scanner;
+
+import static hexlet.code.Engine.game;
 
 
 public class App {
@@ -43,7 +43,7 @@ public class App {
             case GCD -> game(new GreatestCommonDivisor());
             case PROGRESSION -> game(new ArithmeticProgression());
             case PRIME -> game(new PrimeNumber());
-            case EXIT -> sc.close();
+            case EXIT -> System.out.println("Goodbye");
             default -> throw new RuntimeException("No game found");
         }
         sc.close();
