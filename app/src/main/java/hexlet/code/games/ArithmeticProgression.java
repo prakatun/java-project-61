@@ -33,7 +33,7 @@ public class ArithmeticProgression implements Game {
             start = start + interval;
         }
         question[0] = String.valueOf(listProgression.get(index));
-        question[1] = String.valueOf(result);
+        question[1] = String.valueOf(result).trim();
     }
 
     public static int randomNumber() {
