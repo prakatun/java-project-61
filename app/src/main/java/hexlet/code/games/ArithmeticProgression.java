@@ -6,11 +6,10 @@ import java.util.List;
 import static java.lang.Math.random;
 
 public class ArithmeticProgression implements Game {
-    private final String[] question = new String[2];
-    static final int MAX_NUMBER = 5; // максимальное рандомное maxNumber + minNumber
-    static final int MIN_NUMBER = 5; // минимальное рандомное(включительно)
-    static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
-    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
+    private static final int MAX_NUMBER = 5; // максимальное рандомное maxNumber + minNumber
+    private static final int MIN_NUMBER = 5; // минимальное рандомное(включительно)
+    private static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
+    private static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
 
     /**
      * <p>Генерирует прогрессию.</p>
@@ -19,21 +18,25 @@ public class ArithmeticProgression implements Game {
      * @param quantityNumber кол-во чисел.;
      * @param interval       интервал.;
      * @param index          индекс скрытого числа.;
+     * @return String[]      массив с результатом и ответом.;
      */
-    public void generateProgression(int start, int quantityNumber, int interval, int index) {
+    public String[] generateProgression(int start, int quantityNumber, int interval, int index) {
         List<Integer> listProgression = new ArrayList<>();
+        String[] gameData = new String[2];
         StringBuilder result = new StringBuilder();
+        int currentValue = start;
         for (int i = 0; i <= quantityNumber; i++) {
-            listProgression.add(i, start);
+            listProgression.add(i, currentValue);
             if (i == index) {
                 result.append(" ").append("..");
             } else {
-                result.append(" ").append(start);
+                result.append(" ").append(currentValue);
             }
-            start = start + interval;
+            currentValue = currentValue + interval;
         }
-        question[0] = String.valueOf(listProgression.get(index));
-        question[1] = String.valueOf(result).trim();
+        gameData[0] = String.valueOf(listProgression.get(index));
+        gameData[1] = String.valueOf(result).trim();
+        return gameData;
     }
 
     public static int randomNumber() {
@@ -52,8 +55,7 @@ public class ArithmeticProgression implements Game {
         int randomInterval = 1 + (int) (random() * MAX_NUMBER + 1);
         int randomIndex = (int) (random() * randomDistance - 1);
 
-        generateProgression(start, randomDistance, randomInterval, randomIndex);
-        return question;
+        return generateProgression(start, randomDistance, randomInterval, randomIndex);
     }
 
     /**

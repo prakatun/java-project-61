@@ -5,7 +5,7 @@ import hexlet.code.games.Game;
 import java.util.Scanner;
 
 public class Engine {
-    static final int STEP = 3;
+    private static final int STEP = 3;
 
     public static void game(Game game) {
         System.out.println("Welcome to the Brain Games!");
@@ -16,16 +16,16 @@ public class Engine {
         System.out.println(game.getRulesOfTheGame());
         int i = 0;
         while (i < STEP) {
-            String[] question = game.getQuestionAndAnswer();
+            String[] gameData = game.getQuestionAndAnswer();
 
-            System.out.println("Question: " + question[1]);
+            System.out.println("Question: " + gameData[1]);
             String answer = sc.next();
             System.out.println("Your answer: " + answer);
 
-            if (answer.equals(question[0])) {
+            if (answer.equals(gameData[0])) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + question[0] + "'.\n"
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + gameData[0] + "'.\n"
                         + "Let's try again, " + name + "!");
                 return;
             }

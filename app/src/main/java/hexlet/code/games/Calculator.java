@@ -3,8 +3,8 @@ package hexlet.code.games;
 import static java.lang.Math.random;
 
 public class Calculator implements Game {
-    static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
-    static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
+    private static final int FROM_NUMBER = 1; // от _ диапазон рандомных чисел
+    private static final int TO_NUMBER = 100; // до _ диапазон рандомных чисел
 
     /**
      * <p>Возвращает правильный ответ и значение для вопроса .</p>
@@ -14,20 +14,19 @@ public class Calculator implements Game {
     @Override
     public String[] getQuestionAndAnswer() {
         Character randomOperator = randomOperator();
-        String[] question = new String[2];
+        String[] gameData = new String[2];
         int randomNumber1 = randomNumber();
         int randomNumber2 = randomNumber();
-        int result;
 
-        result = switch (randomOperator) {
+        int result = switch (randomOperator) {
             case '+' -> randomNumber1 + randomNumber2;
             case '-' -> randomNumber1 - randomNumber2;
             case '*' -> randomNumber1 * randomNumber2;
             default -> throw new RuntimeException("No such operator");
         };
-        question[0] = String.valueOf(result);
-        question[1] = randomNumber1 + " " + randomOperator + " " + randomNumber2;
-        return question;
+        gameData[0] = String.valueOf(result);
+        gameData[1] = randomNumber1 + " " + randomOperator + " " + randomNumber2;
+        return gameData;
     }
 
     /**
