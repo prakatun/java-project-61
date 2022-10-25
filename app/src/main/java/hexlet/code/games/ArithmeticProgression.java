@@ -49,7 +49,7 @@ public class ArithmeticProgression implements Game {
         List<String> listProgression = generateProgression(start, randomDistance, randomInterval);
 
         gameData[0] = String.valueOf(listProgression.get(randomIndex));
-        listProgression.set(randomIndex,".." );
+        listProgression.set(randomIndex, "..");
         gameData[1] = String.join(" ", listProgression).trim();
         return gameData;
     }
