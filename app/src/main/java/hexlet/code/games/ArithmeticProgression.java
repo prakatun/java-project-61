@@ -17,26 +17,16 @@ public class ArithmeticProgression implements Game {
      * @param start          первое число.;
      * @param quantityNumber кол-во чисел.;
      * @param interval       интервал.;
-     * @param index          индекс скрытого числа.;
-     * @return String[]      массив с результатом и ответом.;
+     * @return List<Integer> прогрессия.;
      */
-    public String[] generateProgression(int start, int quantityNumber, int interval, int index) {
+    public List<Integer> generateProgression(int start, int quantityNumber, int interval) {
         List<Integer> listProgression = new ArrayList<>();
-        String[] gameData = new String[2];
-        StringBuilder result = new StringBuilder();
         int currentValue = start;
         for (int i = 0; i <= quantityNumber; i++) {
             listProgression.add(i, currentValue);
-            if (i == index) {
-                result.append(" ").append("..");
-            } else {
-                result.append(" ").append(currentValue);
-            }
             currentValue = currentValue + interval;
         }
-        gameData[0] = String.valueOf(listProgression.get(index));
-        gameData[1] = String.valueOf(result).trim();
-        return gameData;
+        return listProgression;
     }
 
     public static int randomNumber() {
@@ -50,12 +40,25 @@ public class ArithmeticProgression implements Game {
      */
     @Override
     public String[] getQuestionAndAnswer() {
+        String[] gameData = new String[2];
         int start = randomNumber();
         int randomDistance = MIN_NUMBER + (int) (random() * MAX_NUMBER);
         int randomInterval = 1 + (int) (random() * MAX_NUMBER + 1);
         int randomIndex = (int) (random() * randomDistance - 1);
+        StringBuilder result = new StringBuilder();
 
-        return generateProgression(start, randomDistance, randomInterval, randomIndex);
+        List<Integer> listProgression = generateProgression(start, randomDistance, randomInterval);
+
+        for (int i = 0; i < listProgression.size(); i++) {
+            if (i == randomIndex) {
+                result.append(" ").append("..");
+            } else {
+                result.append(" ").append(listProgression.get(i));
+            }
+        }
+        gameData[0] = String.valueOf(listProgression.get(randomIndex));
+        gameData[1] = String.valueOf(result).trim();
+        return gameData;
     }
 
     /**
