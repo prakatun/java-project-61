@@ -19,11 +19,11 @@ public class ArithmeticProgression implements Game {
      * @param interval       интервал.;
      * @return List<Integer> прогрессия.;
      */
-    public List<Integer> generateProgression(int start, int quantityNumber, int interval) {
-        List<Integer> listProgression = new ArrayList<>();
+    public List<String> generateProgression(int start, int quantityNumber, int interval) {
+        List<String> listProgression = new ArrayList<>();
         int currentValue = start;
         for (int i = 0; i <= quantityNumber; i++) {
-            listProgression.add(i, currentValue);
+            listProgression.add(i, String.valueOf(currentValue));
             currentValue = currentValue + interval;
         }
         return listProgression;
@@ -45,19 +45,12 @@ public class ArithmeticProgression implements Game {
         int randomDistance = MIN_NUMBER + (int) (random() * MAX_NUMBER);
         int randomInterval = 1 + (int) (random() * MAX_NUMBER + 1);
         int randomIndex = (int) (random() * randomDistance - 1);
-        StringBuilder result = new StringBuilder();
 
-        List<Integer> listProgression = generateProgression(start, randomDistance, randomInterval);
+        List<String> listProgression = generateProgression(start, randomDistance, randomInterval);
 
-        for (int i = 0; i < listProgression.size(); i++) {
-            if (i == randomIndex) {
-                result.append(" ").append("..");
-            } else {
-                result.append(" ").append(listProgression.get(i));
-            }
-        }
         gameData[0] = String.valueOf(listProgression.get(randomIndex));
-        gameData[1] = String.valueOf(result).trim();
+        listProgression.set(randomIndex,".." );
+        gameData[1] = String.join(" ", listProgression).trim();
         return gameData;
     }
 
