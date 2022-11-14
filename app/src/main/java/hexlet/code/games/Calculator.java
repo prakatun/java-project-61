@@ -40,9 +40,9 @@ public class Calculator implements Game {
     }
 
     public static Character randomOperator() {
-        final int maxNumber = 3; // максимальное рандомное
-        int randomNumber = (int) (random() * maxNumber);
         Character[] operator = {'-', '+', '*'};
+        final int maxNumber = operator.length; // максимальное рандомное
+        int randomNumber = (int) (random() * maxNumber);
         return operator[randomNumber];
     }
 

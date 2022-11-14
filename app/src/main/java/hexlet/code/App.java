@@ -22,7 +22,7 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String greet =
+        String menu =
                 """
                         Please enter the game number and press Enter.
                         1 - Greet
@@ -33,10 +33,10 @@ public class App {
                         6 - Prime
                         0 - Exit""";
 
-        System.out.println(greet);
-        String selectNumber = sc.next();
-        System.out.println("Your choice: " + selectNumber);
-        switch (selectNumber) {
+        System.out.println(menu);
+        String selectedNumber = sc.next();
+        System.out.println("Your choice: " + selectedNumber);
+        switch (selectedNumber) {
             case HELLO -> Cli.sayHello();
             case EVEN -> game(new EvenNumber());
             case CALC -> game(new Calculator());
